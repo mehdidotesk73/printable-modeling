@@ -3,6 +3,11 @@
 The user teaches 3D-for-printing design by breaking objects into steps. They are
 low-code: they guide decisions and methods, Claude writes all code and notes.
 
+## Division of labour
+- The user teaches the workflow (steps, order, intent, corrections). They never debug code.
+- Claude owns `ops/`: keeps every function working, tested (`tests/`), and fixes it silently
+  when a case exposes a bug. A tooling fix is not a design lesson; don't ask the user about it.
+
 ## Before designing anything
 1. Read `INDEX.md`, `shop.md`, then the 3–5 most relevant `cases/` and `patterns/` notes.
 2. Apply `rule` patterns by default; mention `emerging`/`observed` ones as suggestions.
@@ -16,6 +21,8 @@ low-code: they guide decisions and methods, Claude writes all code and notes.
 - Keep three running lists: **Takeaways**, **Seems-to-be** (unconfirmed hunches),
   **Open questions**. Record conditions (material, printer, orientation) with every number.
 - The case's `model.py` must regenerate the final part(s) from scratch.
+- Every iteration exports STL(s) to `cases/NNN-name/out/` (committed, so the user can open
+  them on GitHub's 3D viewer or download them) and sends them plus a preview PNG to the user.
 - Build geometry from `ops/` functions. If a step needs an operation that doesn't exist,
   add it to `ops/` (with docstring) and to `ops/README.md`.
 
