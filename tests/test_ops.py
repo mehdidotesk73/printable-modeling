@@ -34,3 +34,9 @@ def test_basic_solids():
     assert revolve(profile([(5, 0), (8, 0), (8, 10), (5, 10)], Plane.XZ), Axis.Z).volume > 0
     assert shell(box, 1, [box.faces().sort_by(Axis.Z)[-1]]).volume < box.volume
     assert len(linear_pattern(box, 3, dx=30).solids()) == 3
+
+
+def test_engraved_text():
+    plate = extrude(rect_face(30, 10), 3)
+    engraved = cut(plate, text_solid("0.2", size=5, depth=0.6, z=3 - 0.6))
+    assert engraved.is_valid and engraved.volume < plate.volume
