@@ -18,7 +18,9 @@ Each step of a design is one or more of these. All in `ops/`, units in mm.
 | Pattern | `linear_pattern`, `polar_pattern` | Repeated features |
 | Split for print | `split(part, plane)` | Cutting into bed-sized pieces |
 | Size check | `bbox_size`, `fits_bed` | Will it fit the printer? |
-| Label | `text_solid(label, size, depth, x, y, z)` | Engrave (cut) or emboss (union) text |
+| Label | `engrave(part, label, at, facing)` | Engrave text into any flat face |
+| Clearance offset | `grow(face, gap)` | Cavity profile with exact gap around a part |
+| Bed placement | `drop_to_bed`, `row` | Put parts on z=0, lay out a print plate |
 | Export | `export(part, "x.stl" / "x.step")` | Files for slicer / other CAD |
 | Preview | `tools/preview.py: render(parts, png)` | Images to review on phone |
 

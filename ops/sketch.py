@@ -44,3 +44,10 @@ def rect_path(width, height, corner_radius=0.0, plane=Plane.XY):
 def polyline_path(points, close=False, plane=Plane.XY):
     """Open or closed path through (x, y) or (x, y, z) points."""
     return plane * Wire(Polyline(*points, close=close).edges())
+
+
+def grow(face, gap):
+    """2D offset of a face by `gap` (negative shrinks). Used to make a cavity that
+    leaves exactly `gap` of clearance around a part's cross-section."""
+    from build123d import offset
+    return offset(face, amount=gap)

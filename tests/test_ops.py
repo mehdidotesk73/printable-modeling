@@ -38,5 +38,5 @@ def test_basic_solids():
 
 def test_engraved_text():
     plate = extrude(rect_face(30, 10), 3)
-    engraved = cut(plate, text_solid("0.2", size=5, depth=0.6, z=3 - 0.6))
+    engraved = engrave(plate, "0.2", at=(0, 0, 3), size=5)
     assert engraved.is_valid and engraved.volume < plate.volume

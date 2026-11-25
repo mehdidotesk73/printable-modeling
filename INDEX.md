@@ -10,7 +10,7 @@ One line per note. Keep it current.
 
 ## Cases
 - `cases/_template/` — template for a new case
-- `cases/000-clearance-test/` — calibration: pin-in-hole fits at 7 gaps (awaiting print)
+- `cases/000-clearance-test/` — calibration suite: fits, print-in-place rotation & sliding, snaps; lying vs standing (awaiting print)
 
 ## Patterns
 - `patterns/README.md` — how patterns are recorded and promoted

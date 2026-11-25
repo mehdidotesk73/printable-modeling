@@ -30,3 +30,18 @@ def polar_pattern(part, count, axis_degrees=360):
     for i in range(1, count):
         result = result + Rot(0, 0, axis_degrees * i / count) * part
     return result
+
+
+def drop_to_bed(part):
+    """Move a part so its lowest point sits on z = 0."""
+    return Pos(0, 0, -part.bounding_box().min.Z) * part
+
+
+def row(parts, spacing=5.0):
+    """Lay parts side by side along X with `spacing` between bounding boxes."""
+    placed, x = [], 0.0
+    for p in parts:
+        bb = p.bounding_box()
+        placed.append(Pos(x - bb.min.X, -bb.center().Y, 0) * p)
+        x += bb.size.X + spacing
+    return placed
